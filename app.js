@@ -18,4 +18,16 @@ app.get('/quote/random', function(req, res){
   res.json(randomQuote);
 });
 
+app.get('/quote/:id', function(req, res){
+  var quoteID = req.params.id,
+      invalidID = (quotes.length <= quoteID) || (quoteID < 0),
+      quote = quotes[quoteID];
+
+  if (invalidID) {
+    res.statusCode = 404;
+    res.send('404: The quote was not found');
+  }
+  res.json(quote);
+});
+
 app.listen(4700);
