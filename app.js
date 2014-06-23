@@ -8,4 +8,14 @@ var quotes = [
   { author : 'Neale Donald Walsch', text : "You are afraid to die, and you're afraid to live. What a way to exist."}
 ];
 
+app.get('/', function(req, res){
+  res.json(quotes);
+});
+
+app.get('/quote/random', function(req, res){
+  var randomInt = Math.floor(Math.random() * quotes.length);
+  var randomQuote = quotes[randomInt];
+  res.json(randomQuote);
+});
+
 app.listen(4700);
