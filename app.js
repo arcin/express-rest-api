@@ -56,7 +56,7 @@ app.delete('/quote/:id', function(req, res){
 
   if (invalidID) {
     res.statusCode = 404;
-    res.send("Sorry, that quote doesn't exist");
+    res.send("404: Sorry, that quote doesn't exist");
   }
   quotes.splice(req.params.id, 1);
   res.json(true);
