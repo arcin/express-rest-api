@@ -51,6 +51,15 @@ app.post('/quote', function(req, res){
   res.json(true);
 });
 
+app.delete('/quote/:id', function(req, res){
+  var invalidID = quotes.length <= req.params.id;
 
+  if (invalidID) {
+    res.statusCode = 404;
+    res.send("Sorry, that quote doesn't exist");
+  }
+  quotes.splice(req.params.id, 1);
+  res.json(true);
+});
 
 app.listen(4700);
